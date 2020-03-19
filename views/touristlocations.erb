@@ -1,0 +1,6 @@
+
+<h1>All Possible Tourist Destinations</h1>
+
+<% for location in @tourist_locations %>
+    <p><a href="/touristlocations/<%= location[:id] %>"><%= location[:location_name] %> </a> </p>
+<% end %>

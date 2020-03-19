@@ -1,0 +1,29 @@
+<div class = "row">
+    <div class = "col-lg-12">
+        <h1> <%= @tourist_location[:location_name] %> </h1>
+        <p> <%= @tourist_location [:description] %> </p>
+        <p> Top places to vist in  <%= @tourist_location[:location_name]%> : <%= @tourist_location[:top_things] %> </p> 
+        <iframe
+            width="600"
+            height="450"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
+            &q=<%= @lat%>, <%=@lng %> &zoom=6" allowfullscreen>
+      </iframe>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "col-lg-12">
+        <h2> Reviews </h2>
+    </div>
+</div>
+
+<div class = "row">
+    <div class = "col-lg-12">
+         <a href="/touristlocations/<%= @tourist_location[:id]%>/reviews/new" class="btn btn-primary">Add your own REVIEW!</a>
+    </div>
+</div> 
+
+
+
