@@ -67,6 +67,44 @@ post "/touristlocations/:id/reviews/create" do
         redirect "/touristlocations/#{@tourist_location[:id]}"
 end 
 
+get "/reviews/:id/edit" do
+    puts "params: #{params}"
+    @review = reviews_table.where(id: params["id"]).to_a[0]
+    @tourist_location = tourist_locations_table.where(id: @review[:tourist_locations_id]).to_a[0]
+    view "editreview"
+end
+
+post "/reviews/:id/update" do
+    puts "params: #{params}"
+    @review = reviews_table.where(id: params["id"]).to_a[0]
+    # find the rsvp's event
+    @tourist_location = tourist_locations_table.where(id: @review[:tourist_locations_id]).to_a[0]
+
+    if @current_user && @current_user[:id] == @review[:user_id]
+        reviews_table.where(id: params["id"]).update(
+          age: params["age"],
+          travel_with: params["travel_with"],
+          travel_style: params["travel_style"],
+          top_place: params["top_place"],
+          hidden_gem: params["hidden_gem"],
+          tourist_trap: params["tourist_trap"],
+          top_restaurant: params["top_restaurant"],
+          comments: params["comments"]
+        )
+        redirect "/touristlocations/#{@tourist_location[:id]}"
+    else
+        view "error"
+    end
+end
+
+get "/reviews/:id/destroy" do
+    puts "params: #{params}"
+    review = reviews_table.where(id: params["id"]).to_a[0]
+    @tourist_location = tourist_locations_table.where(id: review[:tourist_locations_id]).to_a[0]
+    reviews_table.where(id: params["id"]).delete
+    redirect "/touristlocations/#{@tourist_location[:id]}"
+end
+
 get "/users/new" do 
     puts "params: #{params}"
     view "newuser"

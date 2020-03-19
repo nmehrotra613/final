@@ -1,0 +1,54 @@
+<h1>Edit Reviews for <%= @tourist_location[:location_name] %></h1>
+
+<form action = "/reviews/<%= @review[:id]%>/update" method = "post">
+ <div class="form-group">
+    <label> Age </label>
+    <input type = "number" class="form-control" name ="age" >
+  </div>
+
+  <div class="form-group">
+    <label>Who were you traveling with? </label>
+    <select class="form-control" name = "travel_with">
+      <option value = "Solo">Solo</option>
+      <option value = "Family">Family</option>
+      <option value = "Friends">Friends</option>
+      <option value = "Just Significant Other"> Just Significant Other </option> 
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>What is your travel style? </label>
+    <select class="form-control" name = "travel_style">
+      <option value = "Explorer"> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
+      <option value = "Maximizer"> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
+      <option value = "Releaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label> Top place to visit </label>
+    <input type = "text" class="form-control" name ="top_place" >
+  </div>
+
+  <div class="form-group">
+    <label> Hidden Gem </label>
+    <input type = "text" class="form-control" name ="hidden_gem" >
+  </div>
+
+   <div class="form-group">
+    <label> Tourist Trap </label>
+    <input type = "text" class="form-control" name ="tourist_trap" >
+  </div>
+
+  <div class="form-group">
+    <label> Top Restaurant </label>
+    <input type = "text" class="form-control" name ="top_restaurant" >
+  </div>
+
+  <div class="form-group">
+    <label>Comments</label>
+    <textarea class="form-control" rows="3" name = "comments"></textarea>
+  </div>
+ <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

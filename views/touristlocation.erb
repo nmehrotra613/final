@@ -18,7 +18,13 @@
         <h2> Reviews </h2>
     <% for review in @reviews %>
         <p> 
-        Name: <%= @users_table.where(id: review[:user_id]).to_a[0][:name] %> <br>
+        Name: <%= @users_table.where(id: review[:user_id]).to_a[0][:name] %> 
+        <small>
+            <% if @current_user && @current_user[:id] == review[:user_id] %>
+                (<a href="/reviews/<%=review[:id]%>/edit">edit</a> | <a href="/reviews/<%= review[:id] %>/destroy">delete</a>)
+            <% end %>
+        </small>   
+        <br>
         Age: <%= review[:age]%> <br>
         Who were you traveling with: <%= review[:travel_with]%> <br>
         Travel Style: <%= review[:travel_style]%> <br>
@@ -38,8 +44,7 @@
             <a href="/touristlocations/<%= @tourist_location[:id]%>/reviews/new" class="btn btn-primary">Add your own REVIEW!</a>
         <% else %>
             <a href="/logins/new" class="btn btn-danger">Please sign in to Review</a>
-        <% end %>
-         
+        <% end %>     
     </div>
 </div> 
 
