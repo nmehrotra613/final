@@ -40,9 +40,9 @@
 
 <div class = "row">
     <div class = "col-lg-12">
-        <% if @current_user %>
+        <% if @current_user && @review_count < 1 %>
             <a href="/touristlocations/<%= @tourist_location[:id]%>/reviews/new" class="btn btn-primary">Add your own REVIEW!</a>
-        <% else %>
+        <% elsif @current_user == nil %>
             <a href="/logins/new" class="btn btn-danger">Please sign in to Review</a>
         <% end %>     
     </div>

@@ -49,6 +49,8 @@ get "/touristlocations/:id" do
         @reviews = reviews_table.where(tourist_locations_id: @tourist_location[:id]).to_a
     end 
 
+    @review_count = reviews_table.where(tourist_locations_id: @tourist_location[:id], user_id: @current_user[:id]).count
+
     view "touristlocation"
 
 end 
