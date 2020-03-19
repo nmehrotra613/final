@@ -42,7 +42,22 @@ get "/touristlocations/:id" do
 end 
 
 get "/touristlocations/:id/reviews/new" do
-    
     @tourist_location = tourist_locations_table.where(id: params[:id]).to_a[0]
     view "newreview"
+end 
+
+post "/touristlocations/:id/reviews/create" do 
+      @tourist_location = tourist_locations_table.where(id: params[:id]).to_a[0]
+      reviews_table.insert(
+          tourist_locations_id: @tourist_location[:id],
+          age: params["age"],
+          travel_with: params["travel_with"],
+          travel_style: params["travel_style"],
+          top_place: params["top_place"],
+          hidden_gem: params["hidden_gem"],
+          tourist_trap: params["tourist_trap"],
+          top_restaurant: params["top_restaurant"],
+          comments: params["comments"]
+      )
+        redirect "/touristlocations/#{@tourist_location[:id]}"
 end 

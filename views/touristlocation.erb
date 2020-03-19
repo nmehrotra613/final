@@ -16,7 +16,18 @@
 <div class = "row">
     <div class = "col-lg-12">
         <h2> Reviews </h2>
-    </div>
+    <% for review in @reviews %>
+        <p> Age: <%= review[:age]%> <br>
+        Who were you traveling with: <%= review[:travel_with]%> <br>
+        Travel Style: <%= review[:travel_style]%> <br>
+        Top Place to Visit: <%= review[:top_place]%> <br>
+        Hidden Gem: <%= review[:hidden_gem]%> <br>
+        Tourist Trap: <%= review[:tourist_trap]%> <br>
+        Top Restaurant: <%= review[:top_restaurant]%> <br>
+        General Trip Comments: <%= review[:comments] %> <br>
+        </p>
+    <% end %>
+     </div>
 </div>
 
 <div class = "row">

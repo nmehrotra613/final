@@ -16,15 +16,17 @@ end
 DB.create_table! :reviews do
   primary_key :id
   foreign_key :tourist_locations_id
-  foreign_key :user_id 
-  String :hidden_gem
-  String :top_place
-  String :tourist_trap 
+  Integer :age
+  String :travel_with
   String :travel_style
+  String :top_place
+  String :hidden_gem
+  String :tourist_trap 
+  String :top_restaurant
   String :comments, text: true
 end
 
-  DB.create_table! :user do 
+  DB.create_table! :users do 
     primary_key :id 
     String :name 
     String :email 

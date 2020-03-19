@@ -1,6 +1,11 @@
 <h1> Review for <%= @tourist_location[:location_name] %> </h1>
 
-<form>
+<form action = "/touristlocations/<%= @tourist_location[:id]%>/reviews/create" method = "post">
+ <div class="form-group">
+    <label> Age </label>
+    <input type = "number" class="form-control" name ="age" >
+  </div>
+
   <div class="form-group">
     <label>Who were you traveling with? </label>
     <select class="form-control" name = "travel_with">
@@ -13,7 +18,7 @@
 
   <div class="form-group">
     <label>What is your travel style? </label>
-    <select class="form-control" name = "travel_with">
+    <select class="form-control" name = "travel_style">
       <option value = "Explorer"> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
       <option value = "Maximizer"> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
       <option value = "Releaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
@@ -45,4 +50,5 @@
     <textarea class="form-control" rows="3" name = "comments"></textarea>
   </div>
  <button type="submit" class="btn btn-primary">Submit</button>
+
 </form>
