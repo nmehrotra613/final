@@ -48,8 +48,10 @@ get "/touristlocations/:id" do
     else
         @reviews = reviews_table.where(tourist_locations_id: @tourist_location[:id]).to_a
     end 
-
-    @review_count = reviews_table.where(tourist_locations_id: @tourist_location[:id], user_id: @current_user[:id]).count
+    
+    if @current_user
+        @review_count = reviews_table.where(tourist_locations_id: @tourist_location[:id], user_id: @current_user[:id]).count
+    end
 
     view "touristlocation"
 

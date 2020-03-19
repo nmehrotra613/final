@@ -3,7 +3,7 @@
 <form action = "/reviews/<%= @review[:id]%>/update" method = "post">
  <div class="form-group">
     <label> Age </label>
-    <input type = "number" class="form-control" placeholder = <%= @review[:age]%> name ="age" >
+    <input type = "number" class="form-control" value = <%= @review[:age]%> name ="age" >
   </div>
 
   <div class="form-group">
@@ -39,42 +39,42 @@
         <% if @review[:travel_style] == "Explorer" %>  
             <option value = "Explorer" selected> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
             <option value = "Maximizer"> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
-            <option value = "Releaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
+            <option value = "Relaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
         <% elsif @review[:travel_style] == "Maximizer"%>   
             <option value = "Explorer"> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
             <option value = "Maximizer" selected> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
-            <option value = "Releaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
+            <option value = "Relaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
          <% elsif @review[:travel_style] == "Relaxer"%>   
             <option value = "Explorer"> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
             <option value = "Maximizer"> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
-            <option value = "Releaxer" selected> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
+            <option value = "Relaxer" selected> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
         <% end %>
     </select>
   </div>
 
   <div class="form-group">
     <label> Top place to visit </label>
-    <input type = "text" class="form-control" placeholder = <%=@review[:top_place]%> name ="top_place" >
+    <textarea class = "form-control"  name ="top_place" > <%=@review[:top_place]%> </textarea>
   </div>
 
   <div class="form-group">
     <label> Hidden Gem </label>
-    <input type = "text" class="form-control" placeholder = <%=@review[:hidden_gem]%> name ="hidden_gem" >
+    <textarea class="form-control" name ="hidden_gem"> <%=@review[:hidden_gem]%> </textarea>
   </div>
 
    <div class="form-group">
     <label> Tourist Trap </label>
-    <input type = "text" class="form-control" placeholder = <%=@review[:tourist_trap]%> name ="tourist_trap" >
+    <textarea class="form-control" name ="tourist_trap"> <%=@review[:tourist_trap]%> </textarea>
   </div>
 
   <div class="form-group">
     <label> Top Restaurant </label>
-    <input type = "text" class="form-control" placeholder = <%= @review[:top_restaurant]%> name ="top_restaurant" >
+    <textarea class="form-control" name ="top_restaurant" > <%= @review[:top_restaurant]%> </textarea>
   </div>
 
   <div class="form-group">
     <label>Comments</label>
-    <textarea class="form-control" placeholder = <%= @review[:comments]%> rows="3" name = "comments"></textarea>
+    <textarea class="form-control" name = "comments"> <%= @review[:comments]%> </textarea>
   </div>
  <button type="submit" class="btn btn-primary">Submit</button>
 
