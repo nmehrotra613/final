@@ -5,7 +5,7 @@ gem 'sinatra-contrib'
 gem 'sequel'
 gem 'twilio-ruby'
 gem 'bcrypt'
-gem 'geocode'
+gem 'geocoder'
 
 group :development do
   gem 'sqlite3'
