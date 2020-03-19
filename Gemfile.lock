@@ -5,10 +5,7 @@ GEM
     bcrypt (3.1.13)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
-    geocode (0.2.1)
-      json
-      trollop
-    json (2.3.0)
+    geocoder (1.6.2)
     jwt (2.2.1)
     mini_portile2 (2.4.0)
     multi_json (1.14.1)
@@ -37,7 +34,6 @@ GEM
       tilt (~> 2.0)
     sqlite3 (1.4.2)
     tilt (2.0.10)
-    trollop (2.9.10)
     twilio-ruby (5.32.0)
       faraday (~> 1.0.0)
       jwt (>= 1.5, <= 2.5)
@@ -48,7 +44,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
-  geocode
+  geocoder
   pg
   sequel
   sinatra
