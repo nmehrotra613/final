@@ -40,9 +40,17 @@ get "/touristlocations/:id" do
     @lng = lat_lng [1]
 
     pp @tourist_location
-    @reviews = reviews_table.where(tourist_locations_id: @tourist_location[:id]).to_a
+
+    if params[:travel_style] != nil
+        if params[:travel_style] != nil 
+            @reviews = reviews_table.where(travel_style: params[:travel_style]).to_a
+        end 
+    else
+        @reviews = reviews_table.where(tourist_locations_id: @tourist_location[:id]).to_a
+    end 
 
     view "touristlocation"
+
 end 
 
 get "/touristlocations/:id/reviews/new" do

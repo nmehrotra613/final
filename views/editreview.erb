@@ -3,12 +3,12 @@
 <form action = "/reviews/<%= @review[:id]%>/update" method = "post">
  <div class="form-group">
     <label> Age </label>
-    <input type = "number" class="form-control" name ="age" >
+    <input type = "number" class="form-control" placeholder = <%= @review[:age]%> name ="age" >
   </div>
 
   <div class="form-group">
     <label>Who were you traveling with? </label>
-    <select class="form-control" name = "travel_with">
+    <select class="form-control"  name = "travel_with">
       <option value = "Solo">Solo</option>
       <option value = "Family">Family</option>
       <option value = "Friends">Friends</option>
@@ -27,27 +27,27 @@
 
   <div class="form-group">
     <label> Top place to visit </label>
-    <input type = "text" class="form-control" name ="top_place" >
+    <input type = "text" class="form-control" placeholder = <%=@review[:top_place]%> name ="top_place" >
   </div>
 
   <div class="form-group">
     <label> Hidden Gem </label>
-    <input type = "text" class="form-control" name ="hidden_gem" >
+    <input type = "text" class="form-control" placeholder = <%=@review[:hidden_gem]%> name ="hidden_gem" >
   </div>
 
    <div class="form-group">
     <label> Tourist Trap </label>
-    <input type = "text" class="form-control" name ="tourist_trap" >
+    <input type = "text" class="form-control" placeholder = <%=@review[:tourist_trap]%> name ="tourist_trap" >
   </div>
 
   <div class="form-group">
     <label> Top Restaurant </label>
-    <input type = "text" class="form-control" name ="top_restaurant" >
+    <input type = "text" class="form-control" placeholder = <%= @review[:top_restaurant]%> name ="top_restaurant" >
   </div>
 
   <div class="form-group">
     <label>Comments</label>
-    <textarea class="form-control" rows="3" name = "comments"></textarea>
+    <textarea class="form-control" placeholder = <%= @review[:comments]%> rows="3" name = "comments"></textarea>
   </div>
  <button type="submit" class="btn btn-primary">Submit</button>
 
