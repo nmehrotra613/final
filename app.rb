@@ -19,6 +19,10 @@ tourist_locations_table = DB.from(:tourist_locations)
 reviews_table = DB.from(:reviews)
 users_table = DB.from(:users)
 
+before do
+    @current_user = users_table.where(id: session["user_id"]).to_a[0]
+end
+
 get "/" do 
     @tourist_locations = tourist_locations_table.all.to_a
     pp @tourist_locations 
@@ -27,8 +31,8 @@ end
 
 get "/touristlocations/:id" do 
     puts "params: #{params}"
-
     @tourist_location = tourist_locations_table.where(id: params[:id]).to_a[0]
+    @users_table = users_table
     location_name = @tourist_location[:location_name]
     results = Geocoder.search(location_name)
     lat_lng = results.first.coordinates
@@ -50,6 +54,7 @@ post "/touristlocations/:id/reviews/create" do
       @tourist_location = tourist_locations_table.where(id: params[:id]).to_a[0]
       reviews_table.insert(
           tourist_locations_id: @tourist_location[:id],
+          user_id: session["user_id"],
           age: params["age"],
           travel_with: params["travel_with"],
           travel_style: params["travel_style"],
@@ -61,3 +66,40 @@ post "/touristlocations/:id/reviews/create" do
       )
         redirect "/touristlocations/#{@tourist_location[:id]}"
 end 
+
+get "/users/new" do 
+    puts "params: #{params}"
+    view "newuser"
+end
+
+get "/users/create" do
+    puts "params: #{params}"
+    hashed_password = BCrypt::Password.create(params["password"])
+    pp hashed_password
+    users_table.insert(
+        name: params["name"],
+        email: params["email"], 
+        password: hashed_password
+    )
+    view "createuser"
+end
+
+get "/logins/new" do
+    view "newlogin"
+end
+
+post "/logins/create" do
+    user = users_table.where(email: params["email"]).to_a[0]
+    if user && BCrypt::Password::new(user[:password]) == params["password"]
+        session["user_id"] = user[:id]
+        view "createlogin"
+    else
+        view "loginfailed"
+    end
+end
+
+get "/logout" do
+    session["user_id"] = nil
+    @current_user = nil
+    view "logout"
+end

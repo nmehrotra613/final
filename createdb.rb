@@ -16,6 +16,7 @@ end
 DB.create_table! :reviews do
   primary_key :id
   foreign_key :tourist_locations_id
+  foreign_key :user_id
   Integer :age
   String :travel_with
   String :travel_style
@@ -30,7 +31,7 @@ end
     primary_key :id 
     String :name 
     String :email 
-    String :passowrd 
+    String :password 
 end
 
 # Insert initial (seed) data
