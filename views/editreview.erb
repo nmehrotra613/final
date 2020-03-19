@@ -9,19 +9,46 @@
   <div class="form-group">
     <label>Who were you traveling with? </label>
     <select class="form-control"  name = "travel_with">
-      <option value = "Solo">Solo</option>
-      <option value = "Family">Family</option>
-      <option value = "Friends">Friends</option>
-      <option value = "Just Significant Other"> Just Significant Other </option> 
+        <% if @review[:travel_with] == "Solo" %>
+            <option value = "Solo" selected>Solo</option>
+            <option value = "Family">Family</option>
+            <option value = "Friends">Friends</option>
+            <option value = "Just Significant Other"> Just Significant Other </option> 
+        <% elsif @review[:travel_with] == "Family" %>
+            <option value = "Solo">Solo</option>
+            <option value = "Family" selected>Family</option>
+            <option value = "Friends">Friends</option>
+            <option value = "Just Significant Other"> Just Significant Other </option> 
+        <% elsif @review[:travel_with] == "Friends" %>
+            <option value = "Solo">Solo</option>
+            <option value = "Family" >Family</option>
+            <option value = "Friends" selected>Friends</option>
+            <option value = "Just Significant Other"> Just Significant Other </option> 
+        <% elsif @review[:travel_with] == "Just Significant Other" %>
+            <option value = "Solo">Solo</option>
+            <option value = "Family" >Family</option>
+            <option value = "Friends">Friends</option>
+            <option value = "Just Significant Other" selected> Just Significant Other </option> 
+        <%end%>
     </select>
   </div>
 
   <div class="form-group">
     <label>What is your travel style? </label>
     <select class="form-control" name = "travel_style">
-      <option value = "Explorer"> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
-      <option value = "Maximizer"> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
-      <option value = "Releaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
+        <% if @review[:travel_style] == "Explorer" %>  
+            <option value = "Explorer" selected> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
+            <option value = "Maximizer"> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
+            <option value = "Releaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
+        <% elsif @review[:travel_style] == "Maximizer"%>   
+            <option value = "Explorer"> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
+            <option value = "Maximizer" selected> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
+            <option value = "Releaxer"> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
+         <% elsif @review[:travel_style] == "Relaxer"%>   
+            <option value = "Explorer"> Explorer - I do not have a strict plan, and my goal is to explore the local culture. </option>
+            <option value = "Maximizer"> Maximizer - I planned my trip beforehand, and my goal is to hit all major attractions during travels. </option>
+            <option value = "Releaxer" selected> Relaxer - I do not have a strict plan, and I have prioritized down-time and relaxation. </option>
+        <% end %>
     </select>
   </div>
 
